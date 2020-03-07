@@ -1,0 +1,8 @@
+{
+  "short_name": "iClinic | Quizzz",
+  "name": "Um quiz para ajudar a você saber mais sobre seus gostos",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
