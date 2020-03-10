@@ -1,10 +1,11 @@
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
+import { Box } from '@material-ui/core';
 
 function Question({
   title,
@@ -16,31 +17,44 @@ function Question({
 }) {
   // Render question
   function onChangetAnswer(event) {
-    onAnswerQuestion(event.target.value);
+    const answer = parseInt(event.target.value, 10);
+    onAnswerQuestion(answer);
   }
-  function onSelectAnswer(event) {
-    onAnswerQuestion(event.target.value);
+  function onSelectAnswer() {
     onChangeQuestion(1);
   }
 
   return (
-    <FormControl component="fieldset">
-      <FormLabel component="legend"> {title}</FormLabel>
-      <RadioGroup name="customized-radios">
-	{answers.map((answer, index) => (
-	  <FormControlLabel
-	    control={<Radio onChange={onChangetAnswer} />}
-	    value={index}
-	    label={answer}
-	    checked={userAnswer == index}
-	    key={answer}
-	  />
-	))}
-      </RadioGroup>
-      <Button variant="contained" color="primary" onClick={onSelectAnswer}>
-	Próximo
-      </Button>
-    </FormControl>
+    <>
+      <FormControl component="fieldset">
+        <Box my={2}>
+          <Typography variant="h6" component="h3">
+            {title}
+          </Typography>
+        </Box>
+        <RadioGroup name="quiz-radios">
+          {answers.map((answer, index) => (
+            <FormControlLabel
+              control={<Radio onChange={onChangetAnswer} />}
+              value={index}
+              label={answer}
+              checked={userAnswer == index}
+              key={answer}
+            />
+          ))}
+        </RadioGroup>
+      </FormControl>
+      <Box align="right">
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={onSelectAnswer}
+          disabled={userAnswer === null}
+        >
+          Próximo
+        </Button>
+      </Box>
+    </>
   );
 }
 

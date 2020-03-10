@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Question from './question';
+import Results from './results';
 
 const initialQuestion = {
   title: '',
@@ -22,8 +23,8 @@ function Quizzer({ data }) {
     if (data.questions && data.questions.length) {
       // Normalize questions
       const normalizeQuestions = data.questions.map(element => ({
-	...initialQuestion,
-	...element
+        ...initialQuestion,
+        ...element
       }));
       // Setup questions
       updateQuestions(normalizeQuestions);
@@ -34,13 +35,14 @@ function Quizzer({ data }) {
 
   // Answer question
   function onAnswerQuestion(userAnswer) {
-    console.log('userAnswer', userAnswer);
     const updatedQuestions = questions.map((element, index) => {
-      if (index === current)
-	return {
-	  ...element,
-	  userAnswer
-	};
+      if (index === current) {
+        // Update question
+        return {
+          ...element,
+          userAnswer
+        };
+      }
       return element;
     });
 
@@ -51,20 +53,40 @@ function Quizzer({ data }) {
   function onChangeQuestion(count) {
     changeCurrent(current + count);
   }
-  if (!questions.length) return 'empty';
 
-  // Render question
-  const currentQuestion = questions[current];
-  return (
-    <Question
-      onChangeQuestion={onChangeQuestion}
-      onAnswerQuestion={onAnswerQuestion}
-      title={currentQuestion.title}
-      answers={currentQuestion.answers}
-      userAnswer={currentQuestion.userAnswer}
-      validAnswer={currentQuestion.valid}
-    />
-  );
+  // Renders
+  const lenQuestions = questions.length;
+
+  // Loading
+  if (!lenQuestions) return 'Carregando';
+
+  // Questions
+  if (lenQuestions > current) {
+    const currentQuestion = questions[current];
+    return (
+      <Question
+        onChangeQuestion={onChangeQuestion}
+        onAnswerQuestion={onAnswerQuestion}
+        title={currentQuestion.title}
+        answers={currentQuestion.answers}
+        userAnswer={currentQuestion.userAnswer}
+        validAnswer={currentQuestion.valid}
+      />
+    );
+  }
+
+  // Results
+  const rightAnswers = questions.reduce((sum, { userAnswer, valid }) => {
+    const count = userAnswer == valid ? 1 : 0;
+    return sum + count;
+  }, 0);
+
+  let result = 'Não há resultados';
+  data.results.forEach(element => {
+    if (rightAnswers >= element.rightAnswers) result = element.label;
+  });
+
+  return <Results rightAnswers={rightAnswers} result={result} />;
 }
 
 export default Quizzer;

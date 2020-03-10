@@ -1,15 +1,17 @@
 import React from 'react';
-import Box from '@material-ui/core/Box';
+import { Box, Card, CardContent } from '@material-ui/core';
 import { questionnaire } from '../../../data/questionnaire';
 import Quizzer from '../../components/Quizzer/quizzer';
 
 function Quiz() {
   return (
-    <>
-      <Box mx="auto" mt={5}>
-	<Quizzer data={questionnaire} />
+    <Card>
+      <Box px={4}>
+        <CardContent>
+          <Quizzer data={questionnaire} />
+        </CardContent>
       </Box>
-    </>
+    </Card>
   );
 }
 
