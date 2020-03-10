@@ -1,15 +1,16 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import { messages } from './quiz.constants';
+import { questionnaire } from '../../../data/questionnaire';
+import Quizzer from '../../components/Quizzer/quizzer';
 
-function Intro() {
+function Quiz() {
   return (
     <>
       <Box mx="auto" mt={5}>
-        {messages.warning}
+	<Quizzer data={questionnaire} />
       </Box>
     </>
   );
 }
 
-export default Intro;
+export default Quiz;
