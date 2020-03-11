@@ -1,17 +1,25 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import { Link } from 'react-router-dom';
+import styles from './styles/results.module.scss';
 
 function Result({ result, rightAnswers }) {
   return (
     <>
-      <Box>
-        <Typography variant="h3" component="h1" align="center" gutterBottom>
-          Você acertou {rightAnswers}
+      <Box align="center">
+        <Typography variant="p" component="p" align="center" gutterBottom>
+          Você acertou <strong>{rightAnswers}</strong>
         </Typography>
-        <Typography variant="h5" component="h3" align="center">
+        <Typography variant="h6" align="center">
           {result}
         </Typography>
+        <img
+          src="https://media.giphy.com/media/qLHzYjlA2FW8g/giphy.gif"
+          alt="Parabéns"
+          className={styles.congratulationsImg}
+        />
+        <Link to="/">Fazer o teste novamente</Link>
       </Box>
     </>
   );

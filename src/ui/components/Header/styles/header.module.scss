@@ -1,0 +1,12 @@
+.header {
+  width: 100%;
+}
+.bar {
+  height: 16px;
+  background: rgb(0, 106, 255);
+  background: linear-gradient(
+    19deg,
+    rgba(0, 106, 255, 1) 41%,
+    rgba(0, 255, 211, 1) 100%
+  );
+}
