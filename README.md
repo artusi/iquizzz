@@ -16,8 +16,7 @@ Basic quiz
 
 ## More info
 
-- I thought about using REDUX but it seemed like I was over engineering things. You can check branch `quiz-redux`if you want
-
+- I thought about using REDUX but it seemed like I was over engineering things.
 ## Questions
 
 - Just ask me rafael.artusi@gmail.com :wink
