@@ -18,7 +18,7 @@ function Intro() {
           {messages.introduction}
         </Typography>
         <Box m={2} />
-        <Link to="/quiz">{messages.buttonLabel}</Link>
+        <Link to="/quiz">{messages.linkLabel}</Link>
       </Box>
     </>
   );

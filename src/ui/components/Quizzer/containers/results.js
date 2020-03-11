@@ -8,7 +8,12 @@ function Result({ result, rightAnswers }) {
   return (
     <>
       <Box align="center">
-        <Typography variant="p" component="p" align="center" gutterBottom>
+        <Typography
+          variant="subtitle1"
+          component="p"
+          align="center"
+          gutterBottom
+        >
           Você acertou <strong>{rightAnswers}</strong>
         </Typography>
         <Typography variant="h6" align="center">
