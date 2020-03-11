@@ -25,7 +25,9 @@ function Result({ result, rightAnswers }) {
           alt="Parabéns"
           className={styles.congratulationsImg}
         />
-        <Link to="/">Fazer o teste novamente</Link>
+        <Link to="/" className="primary-link">
+          Fazer o teste novamente
+        </Link>
       </Box>
     </>
   );

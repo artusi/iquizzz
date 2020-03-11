@@ -2,6 +2,7 @@ import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 
+import './shared/global.scss';
 import theme from './shared/theme';
 import Views from './views';
 
