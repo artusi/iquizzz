@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { Link } from 'react-router-dom';
@@ -29,5 +30,10 @@ function Result({ result, rightAnswers }) {
     </>
   );
 }
+
+Result.propTypes = {
+  result: PropTypes.string.isRequired,
+  rightAnswers: PropTypes.number.isRequired
+};
 
 export default Result;

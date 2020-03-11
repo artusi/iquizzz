@@ -3,7 +3,6 @@ import Box from '@material-ui/core/Box';
 import styles from './styles/header.module.scss';
 
 function Header() {
-  console.log('rendering');
   return (
     <>
       <Box align="center" className={styles.header}>

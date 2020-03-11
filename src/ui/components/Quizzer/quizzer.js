@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   initialState,
   normalizeQuestions,
@@ -63,5 +64,12 @@ function Quizzer({ data }) {
 
   return <Results rightAnswers={rightAnswers} result={result} />;
 }
+
+Quizzer.propTypes = {
+  data: PropTypes.shape({
+    questions: PropTypes.array,
+    results: PropTypes.array
+  }).isRequired
+};
 
 export default Quizzer;

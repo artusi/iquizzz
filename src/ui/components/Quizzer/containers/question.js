@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -56,5 +57,16 @@ function Question({
     </>
   );
 }
+
+Question.propTypes = {
+  title: PropTypes.string.isRequired,
+  answers: PropTypes.array.isRequired,
+  userAnswer: PropTypes.number,
+  onAnswerQuestion: PropTypes.func.isRequired,
+  onChangeQuestion: PropTypes.func.isRequired
+};
+Question.defaultProps = {
+  userAnswer: null
+};
 
 export default Question;
